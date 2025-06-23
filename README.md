@@ -2,7 +2,7 @@
 
 <img src="gpa_badge.svg" alt="GPA badge">
 
-GPA Badge Generator는 엑셀 파일(`grades.xlsx`)을 기반으로 GPA(학점)를 계산하고, 이를 시각적으로 표현한 SVG 배지를 자동으로 생성하여 `README.md`에 반영하는 GitHub Actions 기반 자동화 시스템입니다.
+GPA Badge Generator는 엑셀 파일(`grades.xlsx`)을 기반으로 GPA(학점)를 계산하고, 이를 시각적으로 표현한 SVG 배지를 자동으로 생성합니다.
 
 ---
 
