@@ -8,7 +8,7 @@ grade_map = {
     # P, NP는 계산에서 제외
 }
 
-def calculate_gpa_from_excel(filename="grades.xlsx", sheet_name="Sheet1"):
+def calculate_gpa_from_excel(filename="assets/grades.xlsx", sheet_name="Sheet1"):
     wb = load_workbook(filename)
     ws = wb.active
 
