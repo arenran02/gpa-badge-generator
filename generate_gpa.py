@@ -1,5 +1,4 @@
 from openpyxl import load_workbook
-import glob
 
 grade_map = {
     "A+": 4.5, "A0": 4.0,
@@ -9,12 +8,7 @@ grade_map = {
     # P, NP는 계산에서 제외
 }
 
-def calculate_gpa_from_excel(filename=None, sheet_name="Sheet1"):
-    if filename is None:
-        matched_files = glob.glob("기이수성적조회*.xlsx")
-        if not matched_files:
-            raise FileNotFoundError("기이수성적조회로 시작하는 엑셀 파일이 없습니다.")
-        filename = matched_files[0]
+def calculate_gpa_from_excel(filename="grades.xlsx", sheet_name="Sheet1"):
     wb = load_workbook(filename)
     ws = wb.active
 

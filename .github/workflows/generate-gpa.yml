@@ -3,7 +3,7 @@ name: Generate GPA Badge
 on:
   push:
     paths:
-      - 'grades.xlsx'
+      - '/assets/grades.xlsx'
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 1'  # 매주 월요일 실행
@@ -23,6 +23,9 @@ jobs:
 
     - name: Install dependencies
       run: pip install -r requirements.txt
+
+    - name: Copy grades file to root
+      run: cp assets/grades.xlsx grades.xlsx
 
     - name: Run GPA script
       run: python generate_gpa.py
