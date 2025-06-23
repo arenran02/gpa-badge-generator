@@ -1,0 +1,39 @@
+name: Generate GPA Badge
+
+on:
+  push:
+    paths:
+      - 'grades.xlsx'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 실행
+
+jobs:
+  generate-badge:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.18
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run GPA script
+      run: python generate_gpa.py
+
+    - name: Commit and push README update
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add README.md
+        git commit -m "Update GPA badge" || echo "No changes"
+        git push
+      env:
+        # GitHub Token으로 push 권한 설정
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
