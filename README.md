@@ -3,14 +3,14 @@
 
 <img src="gpa_badge.svg" alt="GPA badge">
 
-GPA Badge Generator is a tool that reads an Excel file (`grades.xlsx`), calculates your GPA, and automatically generates a visual SVG badge to display it and update your profile README.md!
+GPA Badge Generator is a tool that reads an Excel file (`grades_YOUR_UNIVNAME.xlsx`), calculates your GPA, and automatically generates a visual SVG badge to display it and update your profile README.md!
 
 ---
 
 ## 📦 Features
 
 - 🎯 **Automatic GPA Calculation**  
-  Calculates your GPA based on course data stored in `assets/grades.xlsx`.
+  Calculates your GPA based on course data stored in `assets/grades_YOUR_UNIVNAME.xlsx`.
 
 - 🖼️ **SVG GPA Badge Generation**  
   Creates a clean, circular visual badge showing your GPA directly in your repository.
@@ -18,7 +18,7 @@ GPA Badge Generator is a tool that reads an Excel file (`grades.xlsx`), calculat
 - 🤖 **GitHub Actions Automation**  
   - Runs every Monday at midnight (UTC)
   - Can be manually triggered (`workflow_dispatch`)
-  - Automatically runs when `assets/grades.xlsx` is modified
+  - Automatically runs when `assets/grades_YOUR_UNIVNAME.xlsx` is modified
 
 - 📌 **Auto-updates README**  
   Replaces or inserts the latest GPA badge into your `README.md` automatically.
@@ -32,11 +32,11 @@ GPA Badge Generator is a tool that reads an Excel file (`grades.xlsx`), calculat
 ├── .github/workflows/
 │   └── generate_gpa_badge.yml     # GitHub Actions workflow
 ├── assets/
-│   └── grades.xlsx                # Excel file used for GPA calculation
-├── generate_gpa.py                # Python script for GPA calculation and badge generation
+│   └── grades_YOUR_UNIVNAME.xlsx  # Grade Excel file
+├── generate_gpa.py                # GPA calculation and badge generation
 ├── gpa_badge.svg                  # Automatically generated GPA badge
 ├── requirements.txt               # Python dependencies
-└── README.md                      # This document (auto-updated with badge)
+└── README.md                      
 ```
 
 ---
@@ -60,7 +60,7 @@ GPA Badge Generator is a tool that reads an Excel file (`grades.xlsx`), calculat
 
 ## ⚙️ How to Use
 
-1. Update `assets/grades.xlsx` with your transcript data.
+1. Update `assets/grades_YOUR_UNIVNAME.xlsx` with your transcript data.
 2. Add secrets in this Repository settings **GH_USERNAME, GH_EMAIL, GH_PAT**.
 - **GH_USERNAME** is your github id, **GH_EMAIL** is your github email, and **GH_PAT** is your github Personal Access Token(PAT).
 3. Commit and push the changes to GitHub.
