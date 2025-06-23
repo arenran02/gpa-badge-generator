@@ -9,13 +9,13 @@ on:
     - cron: '0 0 * * 1'  # 매주 월요일 실행
 permissions:
   contents: write
-
+  
 jobs:
   generate-badge:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout repository
+    - name: Checkout current repo
       uses: actions/checkout@v3
 
     - name: Set up Python
@@ -26,19 +26,16 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    # - name: Copy grades file to root
-    #   run: cp assets/grades.xlsx assets/grades.xlsx
-
     - name: Run GPA script
       run: python generate_gpa.py
 
-    - name: Commit and push README update
+    - name: Push to arenran02/arenran02
       run: |
+        git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/arenran02/arenran02.git out
+        cp gpa_badge.svg out/
+        cd out
         git config user.name github-actions
         git config user.email github-actions@github.com
-        git add README.md
+        git add gpa_badge.svg
         git commit -m "Update GPA badge" || echo "No changes"
         git push
-      env:
-        # GitHub Token으로 push 권한 설정
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
