@@ -1,4 +1,6 @@
 from openpyxl import load_workbook
+import os
+import glob
 
 grade_map = {
     "A+": 4.5, "A0": 4.0,
@@ -8,7 +10,7 @@ grade_map = {
     # P, NP는 계산에서 제외
 }
 
-def calculate_gpa_from_excel(filename="assets/grades.xlsx", sheet_name="Sheet1"):
+def calculate_gpa_from_excel(filename):
     wb = load_workbook(filename)
     ws = wb.active
 
@@ -105,6 +107,12 @@ def update_readme(gpa):
                 
 
 if __name__ == "__main__":
-    gpa = calculate_gpa_from_excel()
-    generate_gpa_svg(gpa, school_name="Sejong University")
+    grade_files = glob.glob("assets/grades*.xlsx")
+    if not grade_files:
+        print("❌ No grades*.xlsx file found in assets/")
+        exit(1)
+    filename = grade_files[0]
+    school_name = filename.split("/")[-1].removeprefix("grades_").removesuffix(".xlsx").replace("_", " ")
+    gpa = calculate_gpa_from_excel(filename)
+    generate_gpa_svg(gpa, school_name=school_name)
     update_readme(gpa)
