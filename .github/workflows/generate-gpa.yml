@@ -7,6 +7,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 1'  # 매주 월요일 실행
+permissions:
+  contents: write
 
 jobs:
   generate-badge:
