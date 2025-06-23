@@ -30,5 +30,5 @@
     <text x="100" y="100" text-anchor="middle" font-size="13" fill="#888" font-family="Noto Sans KR, sans-serif">/ 4.5</text>
     
     <!-- School Name -->
-    <text x="100" y="150" text-anchor="middle" font-size="13" fill="#666" font-family="Noto Sans KR, sans-serif">Sejong University</text>
+    <text x="100" y="150" text-anchor="middle" font-size="13" fill="#666" font-family="Noto Sans KR, sans-serif">seoul university</text>
 </svg>
